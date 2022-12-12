@@ -1,8 +1,3 @@
-// Testing this structure?
-//
-//
-//
-
 #pragma once
 #include <iostream>
 #include <sstream>

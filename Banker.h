@@ -7,9 +7,7 @@
 #include <iostream>
 #include <queue>
 #include <string>
-#include "BSTree.h"
 #include "BSTree.cpp"
-#include "Transactions.h"
 #include "Transaction.cpp"
 using namespace std;
 

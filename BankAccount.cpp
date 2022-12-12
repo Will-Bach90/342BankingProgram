@@ -1,5 +1,4 @@
 #include "BankAccount.h"
-#include "Funds.h"
 #include "Funds.cpp"
 #include <iostream>
 #include <fstream>
