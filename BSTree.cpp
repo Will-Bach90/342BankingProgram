@@ -166,6 +166,7 @@ bool BSTree::InsertHelper(Node *current, BankAccount *insert)
 }
 
 // delete all information in BSTree
+// using recursively loop through the tree to delete every node 
 void BSTree::clear(Node *node)
 {
     if (node != nullptr)

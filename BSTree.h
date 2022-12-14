@@ -16,10 +16,16 @@ class BSTree
 		//Insert a new account 
 		bool Insert(BankAccount *acc);
 
+		//Retrieve account info
 		bool Retrieve(const int &id, BankAccount *&acc) const;
+		
 		// Display information on all accounts
 		void Display() const;
+
+		// Empty out all accounts from BST,
 		void Empty();
+
+		//check if the tree is empty 
 		bool isEmpty() const;
 
 	private:
