@@ -7,6 +7,8 @@
 
 // constructor sets root to null
 BSTree::BSTree() { root = nullptr; }
+
+//Destructor so that every node is deleted
 BSTree::~BSTree() { clear(root); }
 
 // Insert a new account
@@ -16,7 +18,8 @@ bool BSTree::Insert(BankAccount *accInsert)
     //check valid ID Number 
     if (insertAccountID < 1000 || insertAccountID > 9999)
     {
-        cerr << "ERROR: Account ID Number "<< insertAccountID <<" is not Valid" << endl;
+        cerr << "ERROR: Account ID Number "<< insertAccountID 
+        <<" is not Valid" << endl;
         return false;
     }
 
@@ -121,25 +124,8 @@ void BSTree::PrintHelper(Node *current) const{
 
 bool BSTree::InsertHelper(Node *current, BankAccount *insert)
 {
-    // If newAccount > node then start going down right side
-    if (insert->getID() > current->pAcct->getID())
-    {
-        if (current->right == nullptr)
-        {
-            Node *insInTree = new Node();
-            insInTree->pAcct = insert;
-            insInTree->left = nullptr;
-            insInTree->right = nullptr;
-            current->right = insInTree;
-            return true;
-        }
-        else
-        {
-            return InsertHelper(current->right, insert);
-        }
-    }
-    // Else if newAccount < current node then start going down left side
-    else if (insert->getID() < current->pAcct->getID())
+    // If newAccount < current node then start going down left side
+    if (insert->getID() < current->pAcct->getID())
     {
         if (current->left == NULL)
         {
@@ -153,6 +139,23 @@ bool BSTree::InsertHelper(Node *current, BankAccount *insert)
         else
         {
             return InsertHelper(current->left, insert);
+        }
+    }
+    // Else if newAccount > node then start going down right side
+    else if (insert->getID() > current->pAcct->getID())
+    {
+        if (current->right == nullptr)
+        {
+            Node *insInTree = new Node();
+            insInTree->pAcct = insert;
+            insInTree->left = nullptr;
+            insInTree->right = nullptr;
+            current->right = insInTree;
+            return true;
+        }
+        else
+        {
+            return InsertHelper(current->right, insert);
         }
     }
     else // Displays error if account is already in the BST
